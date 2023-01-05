@@ -27,15 +27,15 @@ def list_target_dir(notes_path, target_path, target_dir):
                 relative_path = full_path.split(target_dir, 1)[1]
                 timestamp_str = time.strftime(  '%Y%m%d %H:%M:%S',
                                     time.gmtime(os.path.getmtime(full_path)))
-                f.writelines(['\n', f'- `{relative_path}`  ', '\n', f'_Modified_: {timestamp_str}' '\n', '  - Description: ', '\n'])
+                f.writelines(['\n', f'- `{relative_path}`  ', '\n', f'_Modified_: {timestamp_str} (UTC)' '\n', '  - Description: ', '\n'])
 
         f.writelines(['\n\n', '---'])
 
 def list_git(notes_path):
     # os.chdir()
     # Get the project changes from Git
-    subprocess.run('git add -A')
-    with subprocess.Popen(["git", "diff", "HEAD", "--name-status"], stdout=subprocess.PIPE) as proc:
+    subprocess.run('git', 'add', '-A')
+    with subprocess.Popen(['git', 'diff', 'HEAD', '--name-status'], stdout=subprocess.PIPE) as proc:
         lines = proc.stdout.readlines()
 
     # Write the changes in a file, noting added, modified, etc.
