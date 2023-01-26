@@ -5,7 +5,7 @@ import subprocess
 def list_files(target_path, project_path):
     # Set up paths
     target_dir = target_path.split(os.path.sep)[-1]
-    notes_path = os.path.join(target_path, "files.md")
+    notes_path = os.path.join(target_path, "files.txt")
 
     list_target_dir(notes_path=notes_path, target_path=target_path, target_dir=target_dir)
 
